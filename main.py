@@ -1,3 +1,38 @@
+import asyncio
+import os
+from aiogram import Bot, Dispatcher, F, types
+from aiogram.filters import Command
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+
+TOKEN = os.getenv("BOT_TOKEN")
+bot = Bot(token=TOKEN)
+dp = Dispatcher()
+
+
+@dp.message(Command("start"))
+async def start_cmd(message: Message):
+    kb = [
+        [
+            InlineKeyboardButton(
+                text="💎 Баалар / Прейскурант", callback_data="price"
+            )
+        ],
+        [InlineKeyboardButton(text="🎮 Донат кылуу", callback_data="donat")],
+        [
+            InlineKeyboardButton(
+                text="👨‍💻 Админ менен байланышуу",
+                url="https://t.me/your_admin_username",
+            )
+        ],
+    ]
+    keyboard = InlineKeyboardMarkup(inline_keyboard=kb)
+    await message.answer(
+        "Салам! Оюндарга автоматикалык түрдө донат салуу ботуна кош келдиңиз! 🎮\n\n"
+        "Керектүү бөлүмдү тандаңыз:",
+        reply_markup=keyboard,
+    )
+
+
 @dp.callback_query(F.data == "price")
 async def show_price(callback: types.CallbackQuery):
     text = (
@@ -31,4 +66,12 @@ async def process_donat(callback: types.CallbackQuery):
     )
     await callback.message.answer(text, parse_mode="Markdown")
     await callback.answer()
+
+
+async def main():
+    await dp.start_polling(bot)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
     
