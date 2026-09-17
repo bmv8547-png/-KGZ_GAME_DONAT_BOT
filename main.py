@@ -42,12 +42,12 @@ async def show_price(callback: types.CallbackQuery):
         "🔥 **Free Fire:**\n"
         "• 100+10 алма — 80 сом\n"
         "• 310+31 алма — 250 сом\n"
-        "• 520+52 алма — 400 сом\n\n"
-        "• 1166 алма - 780сом\n\n"
-        "• 6150 алма - 3800сом\n\n"
-        "• недельный ваучер - 165сом\n\n"
-        "• недельный лайт - 40сом\n\n"
-        "• месячный ваучер - 600сом\n\n"
+        "• 520+52 алма — 400 сом\n"
+        "• 1166 алма — 780 сом\n"
+        "• 6150 алма — 3800 сом\n"
+        "• недельный ваучер — 165 сом\n"
+        "• недельный лайт — 40 сом\n"
+        "• месячный ваучер — 600 сом"
     )
     await callback.message.answer(text, parse_mode="Markdown")
     await callback.answer()
@@ -55,6 +55,7 @@ async def show_price(callback: types.CallbackQuery):
 
 # Донат кылуу баскычы басылганда
 @dp.callback_query(F.data == "donat")
+### Донат кылуу маалыматы
 async def process_donat(callback: types.CallbackQuery):
     text = (
         "💳 **Төлөм реквизиттери:**\n\n"
@@ -71,4 +72,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-    
+        
