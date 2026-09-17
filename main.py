@@ -48,10 +48,6 @@ async def show_price(callback: types.CallbackQuery):
         "• недельный ваучер - 165сом\n\n"
         "• недельный лайт - 40сом\n\n"
         "• месячный ваучер - 600сом\n\n"
-        "🔫 **PUBG Mobile:**\n"
-        "• 60 UC — 100 сом\n"
-        "• 325 UC — 490 сом\n"
-        "• 660 UC — 900 сом"
     )
     await callback.message.answer(text, parse_mode="Markdown")
     await callback.answer()
