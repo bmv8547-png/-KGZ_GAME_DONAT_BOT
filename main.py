@@ -64,7 +64,7 @@ async def show_price(callback: types.CallbackQuery):
 async def process_donat(callback: types.CallbackQuery):
     text = (
         "💳 **Төлөм реквизиттери:**\n\n"
-        "OBANK / BAKAIBANK: `0705341671`\n\n"
+        "OBANK / BAKAIBANK: `0700341671`\n\n"
         "Төлөгөндөн кийин чекти жана оюндагы ID'ңизди админге жөнөтүңүз!"
     )
     await callback.message.answer(text, parse_mode="Markdown")
