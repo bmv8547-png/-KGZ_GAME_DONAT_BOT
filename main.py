@@ -38,16 +38,22 @@ async def start_cmd(message: Message):
 @dp.callback_query(F.data == "price")
 async def show_price(callback: types.CallbackQuery):
     text = (
-        "💎 **Оюндардын донат баалары:**\n\n"
-        "🔥 **Free Fire:**\n"
-        "• 100+10 алма — 80 сом\n"
-        "• 310+31 алма — 250 сом\n"
-        "• 520+52 алма — 400 сом\n"
-        "• 1166 алма — 780 сом\n"
-        "• 6150 алма — 3800 сом\n"
-        "• недельный ваучер — 165 сом\n"
-        "• недельный лайт — 40 сом\n"
-        "• месячный ваучер — 600 сом"
+        "⚠️ **Цены для гильдия боты:**\n\n"
+        "• 4 бот — 180 сом ✅\n"
+        "• 8 бот — 370 сом ✅\n"
+        "• 12 бот — 560 сом ✅\n"
+        "• 16 бот — 750 сом ✅\n"
+        "• 20 бот — 945 сом ✅\n\n"
+        "_Все это временно_\n\n"
+        "💎 **Алмазы:**\n"
+        "• 90-110 алмаз\n"
+        "• 270-341 алмаз\n"
+        "• 410-572 алмаз\n"
+        "• 800-1166 алмаз\n"
+        "• 1600-2398 алмаз\n"
+        "• 3900-6150 алмаз\n"
+        "• Недельный ваучер — 165 сом\n"
+        "• Недельный лайт ваучер — 40 сом"
     )
     await callback.message.answer(text, parse_mode="Markdown")
     await callback.answer()
@@ -55,7 +61,6 @@ async def show_price(callback: types.CallbackQuery):
 
 # Донат кылуу баскычы басылганда
 @dp.callback_query(F.data == "donat")
-### Донат кылуу маалыматы
 async def process_donat(callback: types.CallbackQuery):
     text = (
         "💳 **Төлөм реквизиттери:**\n\n"
@@ -72,4 +77,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-        
