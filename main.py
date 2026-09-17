@@ -9,7 +9,6 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
 
-# /start командасы жана меню кнопкалары
 @dp.message(Command("start"))
 async def start_cmd(message: Message):
     kb = [
@@ -34,7 +33,6 @@ async def start_cmd(message: Message):
     )
 
 
-# Баалар (Прейскурант) баскычы басылганда
 @dp.callback_query(F.data == "price")
 async def show_price(callback: types.CallbackQuery):
     text = (
@@ -59,7 +57,6 @@ async def show_price(callback: types.CallbackQuery):
     await callback.answer()
 
 
-# Донат кылуу баскычы басылганда
 @dp.callback_query(F.data == "donat")
 async def process_donat(callback: types.CallbackQuery):
     text = (
@@ -77,3 +74,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+    
