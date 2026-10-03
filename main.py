@@ -56,6 +56,11 @@ async def show_price(callback: types.CallbackQuery):
         "• 3725-6160 алмаз\n"
         "• Недельный ваучер — 155 сом\n"
         "• Недельный лайт ваучер — 38 сом"
+        "\n💀⚙️ **Чувствительность:**\n"
+"• Обычный — 20 сом\n"
+"• Средний — 20 сом\n"
+"• VIP — 30–50 сом\n"
+"📱 Все телефоны"
     )
     await callback.message.answer(text, parse_mode="Markdown")
     await callback.answer()
