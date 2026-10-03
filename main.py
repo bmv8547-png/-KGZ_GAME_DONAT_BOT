@@ -1,5 +1,7 @@
 import asyncio
 import os
+import threading
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from aiogram import Bot, Dispatcher, F, types
 from aiogram.filters import Command
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
@@ -21,7 +23,7 @@ async def start_cmd(message: Message):
         [
             InlineKeyboardButton(
                 text="👨‍💻 Админ менен байланышуу",
-                url="https://t.me/your_admin_username",
+                url="https://t.me/DonatKingg"
             )
         ],
     ]
@@ -70,7 +72,24 @@ async def process_donat(callback: types.CallbackQuery):
     await callback.answer()
 
 
+class HealthHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"Bot is running!")
+
+    def log_message(self, format, *args):
+        pass
+
+
+def run_web_server():
+    port = int(os.environ.get("PORT", 10000))
+    server = HTTPServer(("0.0.0.0", port), HealthHandler)
+    server.serve_forever()
+
+
 async def main():
+    threading.Thread(target=run_web_server, daemon=True).start()
     await dp.start_polling(bot)
 
 
